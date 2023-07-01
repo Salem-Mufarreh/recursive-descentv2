@@ -1,0 +1,12 @@
+project NestedLoopExample;
+const N = 5;
+var i, j: int;
+start
+    loop (i < N)
+        do
+            loop (j < N)
+                do
+                    j := j + i;
+    
+    output(j);
+end.

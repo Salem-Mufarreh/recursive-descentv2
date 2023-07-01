@@ -1,0 +1,33 @@
+project MyProject;
+const
+ PI = 3;
+ MAX_VALUE = 100;
+
+routine myRoutine;
+
+var x, y, z: int;
+start
+    ;
+    x := 5;
+    y := 10;
+           
+    output(x);
+    input(y);
+
+    if (x < y)
+        then
+            output(x)
+        else
+            output(y)
+    endif;
+
+    loop (x < MAX_VALUE)
+        do
+            x := x + 1 + y * (3 / y);
+
+end;
+
+start
+    output(myRoutine);
+    output(0);
+end.
