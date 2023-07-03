@@ -154,6 +154,10 @@ public class RecursiveDescentParser {
             match(")");
             match("do");
             statement();
+        } else if(currentToken.equals("start")){
+            match("start");
+            stmtList();
+            match("end");
         }
     }
 

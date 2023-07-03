@@ -1,0 +1,28 @@
+project name ;
+const
+x = 5;
+y = 10;
+z = 15;
+var
+x : int ;
+z,y: int ;
+
+routine myRoutine ;
+start
+end ;
+
+start
+x := x * y ;
+input(x);
+output(w);
+if ( x = 10 ) then
+output(x)
+else
+loop ( x < 10 ) do
+output(z)
+endif ;
+start
+;
+end;
+
+end .
