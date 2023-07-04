@@ -11,7 +11,7 @@ public class Tokenizer {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] lineTokens = line.split("\\s+|(?<=[,;().])|(?=[,;:().])"); // Split line into tokens based on whitespace
+                String[] lineTokens = line.split("\\s+|(?<=[,;().*/+])|(?=[,;:().*/+])"); // Split line into tokens based on whitespace
                 for (String token : lineTokens) {
                     if (!token.isBlank()) {
                         tokens.add(token);

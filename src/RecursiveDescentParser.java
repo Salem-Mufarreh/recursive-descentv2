@@ -9,6 +9,7 @@ public class RecursiveDescentParser {
     private String currentToken;
     private List<String> terminals = new ArrayList<>();
     private List<String> reserved = new ArrayList<>();
+    private List<String> operations = new ArrayList<>();
 
 
     public RecursiveDescentParser(List<String> tokens) {
@@ -203,7 +204,14 @@ public class RecursiveDescentParser {
     }
 
     private void relationalOper() {
-        match(currentToken);
+
+        if(operations.contains(currentToken)){
+            match(currentToken);
+        }
+        else{
+            throw new RuntimeException("Syntax Error: not valid user defined name, at '" + currentToken + "'");
+        }
+
     }
 
     private void elsePart() {
@@ -279,6 +287,10 @@ public class RecursiveDescentParser {
                 "if","then","endif","else","loop","do"};
         for(String rs : reserve){
             reserved.add(rs);
+        }
+        String oper[] = {"=", "<>", "<", "<=", ">", ">="};
+        for (String token:oper) {
+            operations.add(token);
         }
 
     }
