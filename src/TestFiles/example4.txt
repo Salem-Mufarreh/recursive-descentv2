@@ -1,4 +1,4 @@
-project name ;
+project ss ;
 const
 x = 5;
 y = 10;

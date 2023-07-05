@@ -52,7 +52,12 @@ public class RecursiveDescentParser {
 
     private void projectHeading() {
         match("project");
-        nameValue();
+        if(isIdentifier(currentToken)){
+            matchIdentifier();
+        }
+        else{
+            throw new RuntimeException("the token "+currentToken +" is a reserved word at index ="+index );
+        }
         match(";");
     }
 
@@ -127,7 +132,8 @@ public class RecursiveDescentParser {
     private void statement() {
         if (isIdentifier(currentToken)) {
             nameValue();
-            match(":=");
+            match(":");
+            match("=");
             arithExp();
         } else if (currentToken.equals("input")) {
             match("input");
@@ -194,7 +200,13 @@ public class RecursiveDescentParser {
     }
 
     private void nameValue() {
-        match(currentToken);
+        if(isIdentifier(currentToken)){
+            matchIdentifier();
+        }
+        else{
+            matchInteger();
+        }
+
     }
 
     private void boolExp() {
@@ -204,8 +216,13 @@ public class RecursiveDescentParser {
     }
 
     private void relationalOper() {
-
         if(operations.contains(currentToken)){
+            if (currentToken.equals("<") && tokens.get(index+1).equals(">") || currentToken.equals("<") && tokens.get(index+1).equals("=")){
+                match(currentToken);
+            }
+            if (currentToken.equals(">") && tokens.get(index+1).equals("=")){
+                match(currentToken);
+            }
             match(currentToken);
         }
         else{
